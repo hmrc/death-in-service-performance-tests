@@ -31,20 +31,6 @@ object DISPageRequests extends BaseRequest {
   private val usedReferences = scala.collection.mutable.Set[String]()
 
 
-  def generateUniqueReference(length: Int): String = {
-
-    var reference: String = ""
-
-    do {
-      reference = (1 to length)
-        .map(_ => characters(random.nextInt(characters.length)))
-        .mkString
-    } while (usedReferences.contains(reference))
-
-    usedReferences.add(reference)
-    reference
-  }
-
   def getClearData: HttpRequestBuilder =
     http("Clear Data")
       .get(s"$baseUrl/$route/test-only/clear-all": String)
@@ -69,7 +55,7 @@ object DISPageRequests extends BaseRequest {
       .formParam("authorityId", _ => "")
       .formParam("enrolment[0].name", _ => "HMRC-PODS-ORG")
       .formParam("enrolment[0].taxIdentifier[0].name", _ => "PsaID")
-      .formParam("enrolment[0].taxIdentifier[0].value",_ =>"A2100005")
+      .formParam("enrolment[0].taxIdentifier[0].value", _ => "A2100005")
       .formParam("enrolment[0].state", _ => "Activated")
       .check(status.is(303))
 
@@ -77,7 +63,7 @@ object DISPageRequests extends BaseRequest {
     http("Get What Will You Need Page")
       .get(s"$baseUrl$WhatWillYouNeed")
       .check(status.is(200))
-      //.check(saveCsrfToken())
+  //.check(saveCsrfToken())
 
   def postWhatWillYouNeedPage: HttpRequestBuilder =
     http("Post What Will You Need Page")
