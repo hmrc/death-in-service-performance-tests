@@ -17,18 +17,10 @@
 package uk.gov.hmrc.perftests.dis
 
 import io.gatling.core.Predef._
-import io.gatling.core.session.Expression
 import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 
-import scala.util.Random
-
-
 object DISPageRequests extends BaseRequest {
-
-  private val characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  private val random = new Random()
-  private val usedReferences = scala.collection.mutable.Set[String]()
 
 
   def getClearData: HttpRequestBuilder =
