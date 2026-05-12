@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,10 @@
 package uk.gov.hmrc.perftests.dis
 
 
-import io.gatling.http.Predef._
 import io.gatling.core.Predef._
 import io.gatling.core.check.CheckBuilder
 import io.gatling.core.check.regex.RegexCheckType
 import io.gatling.core.session.Expression
-import io.gatling.core.session.el.El
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
 
 
@@ -33,13 +31,13 @@ trait BaseRequest extends ServicesConfiguration {
   val ggSignInUrl = s"$authUrl/auth-login-stub/gg-sign-in"
   val route: String = "/death-in-service/S2400000001"
   val WhatWillYouNeed: String = s"$route/what-you-will-need"
-  println("Auth URL = " + ggSignInUrl)
 
   protected val CsrfPattern =
     """<input type="hidden" name="csrfToken" value="([^"]+)"""
 
   protected def saveCsrfToken(): CheckBuilder[RegexCheckType, String] =
-    regex(_ =>CsrfPattern).saveAs("csrfToken")
+    regex(_ => CsrfPattern).saveAs("csrfToken")
+
   protected val csrfTokenExpr: Expression[String] = "#{csrfToken}"
 
 

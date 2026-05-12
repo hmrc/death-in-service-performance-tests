@@ -1,7 +1,7 @@
 lazy val root = (project in file("."))
   .enablePlugins(GatlingPlugin)
   .settings(
-      name := "inheritance-tax-on-pensions-performance-tests",
+      name := "death-in-service-performance-tests",
       version := "0.1.0-SNAPSHOT",
       scalaVersion := "3.3.7",
       scalacOptions ++= Seq("-feature", "-language:implicitConversions", "-language:postfixOps"),
