@@ -2,7 +2,7 @@
 
 # death-in-service-performance-tests
 
-Performance test suite for the `<digital service name>`, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
+Performance test suite for the `Death in service`, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
 
 ## Pre-requisites
 
@@ -10,11 +10,14 @@ Performance test suite for the `<digital service name>`, using [performance-test
 
 Start Mongo Docker container following instructions from the [MDTP Handbook](https://docs.tax.service.gov.uk/mdtp-handbook/documentation/developer-set-up/set-up-mongodb.html).
 
-Start `PLATFORM_TEST_EXAMPLE_UI_TESTS` services as follows:
 
-```bash
-sm2 --start PLATFORM_TEST_EXAMPLE_UI_TESTS
-```
+1. Make sure you run all the dependant services through the service manager:
+
+   > `sm2 --start DEATH_IN_SERVICE_ALL`
+
+   or if you want to run IHTP and DIS in parallel:
+
+   > `sm2 --start IHTP_AND_DIS_ALL`
 
 ### Logging
 
